@@ -29,6 +29,8 @@ def convert2Chordpro(filePath):
             else:
                 newLine = insertInLine(decodedLine, lastMatches, lastPositions)
                 outputFileStream.write(newLine.encode('utf-8'))
+        else:
+            outputFileStream.write('\n')
 
     inputFileStream.close()
     outputFileStream.close()
