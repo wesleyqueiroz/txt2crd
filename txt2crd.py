@@ -25,8 +25,8 @@ def getChordMatches(line):
     chords = "(?:maj|min|m|sus|aug|dim)?"
     additions = "[0-9]?"
     chordFormPattern = notes + accidentals + chords + additions
-    fullPattern = chordFormPattern + "(?:/%s)?" % chordFormPattern
-    matches = re.findall(fullPattern, line)
+    fullPattern = chordFormPattern + "(?:/%s)?\s" % chordFormPattern
+    matches = [x.replace(' ', '').replace('\n', '') for x in re.findall(fullPattern, line)]
     print "Line: " + line + "Matches: " + str(matches) + '\n'
     return matches
 
