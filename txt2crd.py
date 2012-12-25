@@ -35,7 +35,7 @@ def insert(original, new, pos):
         
 def insertInLine(line, matches, positions):
     i = 0
-    insertOffset = 0
+    insertOffset = 1
     newLine = line
     while i < len(matches):
         newLine = insert(newLine, "[%s]" % matches[i], positions[i] + insertOffset)
