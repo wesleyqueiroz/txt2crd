@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 def main():
     import sys
 
@@ -17,15 +19,16 @@ def convert2Chordpro(filePath):
     
     matches = positions = []
     for line in inputFileStream:
-        if line.strip():
-            matches, positions = getChordMatches(line)
+        decodedLine = unicode(line, encoding='utf-8')
+        if decodedLine.strip():
+            matches, positions = getChordMatches(decodedLine)
             if matches and positions:
-                lastLine = line
+                lastLine = decodedLine
                 lastMatches = matches
                 lastPositions = positions
             else:
-                newLine = insertInLine(line, lastMatches, lastPositions)
-                outputFileStream.write(newLine)
+                newLine = insertInLine(decodedLine, lastMatches, lastPositions)
+                outputFileStream.write(newLine.encode('utf-8'))
 
     inputFileStream.close()
     outputFileStream.close()
