@@ -1,5 +1,6 @@
 def main():
     import sys
+
     validInput = len(sys.argv) > 1
     if validInput:
         filePath = sys.argv[1]
@@ -15,11 +16,13 @@ def convert2Chordpro(filePath):
     outputFileStream = open(outputFileName, 'w')
     
     for line in inputFileStream:
-        chordMatches = getChordMatches(line)
+        matches, positions = getChordMatches(line)
+        print matches, positions
         
 
 def getChordMatches(line):
     import re
+
     notes = "[ABCDEFG]";
     accidentals = "(?:#|##|b|bb)?";
     chords = "(?:maj|min|m|sus|aug|dim)?"
@@ -27,8 +30,9 @@ def getChordMatches(line):
     chordFormPattern = notes + accidentals + chords + additions
     fullPattern = chordFormPattern + "(?:/%s)?\s" % chordFormPattern
     matches = [x.replace(' ', '').replace('\n', '') for x in re.findall(fullPattern, line)]
-    print "Line: " + line + "Matches: " + str(matches) + '\n'
-    return matches
+    positions = [x.start() for x in re.finditer(fullPattern, line)]
+
+    return matches, positions
 
 if __name__ == "__main__":
     main()
