@@ -15,10 +15,38 @@ def convert2Chordpro(filePath):
     outputFileName = filePath.split("/")[-1][:-4] + ".crd"
     outputFileStream = open(outputFileName, 'w')
     
+    matches = positions = []
     for line in inputFileStream:
-        matches, positions = getChordMatches(line)
-        print matches, positions
+        if line.strip():
+            matches, positions = getChordMatches(line)
+            if matches and positions:
+                lastLine = line
+                lastMatches = matches
+                lastPositions = positions
+            else:
+                newLine = insertInLine(line, lastMatches, lastPositions)
+                print "  lastMatches: " + str(lastMatches)
+                print "lastPositions: " + str(lastPositions)
+                print "     lastLine: " + lastLine
+                print "         line: " + line
+                print "      newLine: " + newLine
+
+    inputFileStream.close()
+    outputFileStream.close()
+
+def insert(original, new, pos):
+    return original[:pos] + new + original[pos:]
         
+def insertInLine(line, matches, positions):
+    i = 0
+    insertOffset = 0
+    newLine = line
+    while i < len(matches):
+        newLine = insert(newLine, "[%s]" % matches[i], positions[i] + insertOffset)
+        insertOffset += len(matches[i]) + 2
+        i += 1
+
+    return newLine
 
 def getChordMatches(line):
     import re
