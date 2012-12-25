@@ -25,11 +25,7 @@ def convert2Chordpro(filePath):
                 lastPositions = positions
             else:
                 newLine = insertInLine(line, lastMatches, lastPositions)
-                print "  lastMatches: " + str(lastMatches)
-                print "lastPositions: " + str(lastPositions)
-                print "     lastLine: " + lastLine
-                print "         line: " + line
-                print "      newLine: " + newLine
+                outputFileStream.write(newLine)
 
     inputFileStream.close()
     outputFileStream.close()
