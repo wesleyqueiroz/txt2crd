@@ -57,7 +57,7 @@ def getChordMatches(line):
     chords = "(?:maj|min|m|sus|aug|dim)?"
     additions = "[0-9]?"
     chordFormPattern = notes + accidentals + chords + additions
-    fullPattern = chordFormPattern + "(?:/%s)?\s" % chordFormPattern
+    fullPattern = chordFormPattern + "(?:/%s)?\s" % (notes + accidentals)
     matches = [x.replace(' ', '').replace('\n', '') for x in re.findall(fullPattern, line)]
     positions = [x.start() for x in re.finditer(fullPattern, line)]
 
