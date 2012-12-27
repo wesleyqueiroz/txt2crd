@@ -21,19 +21,19 @@ def convert2Chordpro(filePath):
     lastLine = lastMatches = lastPositions = None
     for line in inputFileStream:
         decodedLine = unicode(line, encoding='utf-8')
-        if decodedLine.strip():
-            matches, positions = getChordMatches(decodedLine)
-            isChordLine = matches and positions and (len(decodedLine.replace(' ', '').replace('\n', '')) == len(''.join(matches)))
-            if isChordLine:
-                lastLine = decodedLine
-                lastMatches = matches
-                lastPositions = positions
-            elif lastMatches and lastPositions and lastLine:
-                newLine = insertInLine(decodedLine, lastMatches, lastPositions)
-                outputFileStream.write(newLine.encode('utf-8'))
-                lastLine = lastMatches = lastPositions = None
+        matches, positions = getChordMatches(decodedLine)
+        isChordLine = matches and positions and (len(decodedLine.replace(' ', '').replace('\n', '')) == len(''.join(matches)))
+        if isChordLine:
+            lastLine = decodedLine
+            lastMatches = matches
+            lastPositions = positions
+        elif lastMatches and lastPositions and lastLine:
+            newLine = insertInLine(decodedLine, lastMatches, lastPositions)
+            outputFileStream.write(newLine.encode('utf-8'))
+            lastLine = lastMatches = lastPositions = None
         else:
-            outputFileStream.write('\n')
+            outputFileStream.write(decodedLine.encode('utf-8'))
+
 
     inputFileStream.close()
     outputFileStream.close()
