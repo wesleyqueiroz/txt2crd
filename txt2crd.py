@@ -27,24 +27,25 @@ def convert2Chordpro(filePath):
             lastLine = decodedLine
             lastMatches = matches
             lastPositions = positions
-        elif lastMatches and lastPositions and lastLine:
+        elif lastMatches and lastPositions and lastLine and decodedLine.strip():
             newLine = insertInLine(decodedLine, lastMatches, lastPositions)
             outputFileStream.write(newLine.encode('utf-8'))
             lastLine = lastMatches = lastPositions = None
         else:
+            if lastLine:
+                outputFileStream.write(lastLine.encode('utf-8'))
+                lastLine = lastMatches = lastPositions = None
             outputFileStream.write(decodedLine.encode('utf-8'))
-
 
     inputFileStream.close()
     outputFileStream.close()
 
 def removeWhitespaces(line):
     return line.replace(' ', '').replace('\n', '')
-
-def insert(original, new, pos):
-    return original[:pos] + new + original[pos:]
         
 def insertInLine(line, matches, positions):
+    def insert(original, new, pos):
+        return original[:pos] + new + original[pos:]
     i = 0
     insertOffset = 1
     newLine = line
