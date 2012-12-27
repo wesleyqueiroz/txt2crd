@@ -22,7 +22,7 @@ def convert2Chordpro(filePath):
     for line in inputFileStream:
         decodedLine = unicode(line, encoding='utf-8')
         matches, positions = getChordMatches(decodedLine)
-        isChordLine = matches and positions and (len(decodedLine.replace(' ', '').replace('\n', '')) == len(''.join(matches)))
+        isChordLine = matches and positions and (removeWhitespaces(decodedLine) == ''.join(matches))
         if isChordLine:
             lastLine = decodedLine
             lastMatches = matches
@@ -37,6 +37,9 @@ def convert2Chordpro(filePath):
 
     inputFileStream.close()
     outputFileStream.close()
+
+def removeWhitespaces(line):
+    return line.replace(' ', '').replace('\n', '')
 
 def insert(original, new, pos):
     return original[:pos] + new + original[pos:]
@@ -61,7 +64,7 @@ def getChordMatches(line):
     additions = "[0-9]?"
     chordFormPattern = notes + accidentals + chords + additions
     fullPattern = chordFormPattern + "(?:/%s)?\s" % (notes + accidentals)
-    matches = [x.replace(' ', '').replace('\n', '') for x in re.findall(fullPattern, line)]
+    matches = [removeWhitespaces(x) for x in re.findall(fullPattern, line)]
     positions = [x.start() for x in re.finditer(fullPattern, line)]
 
     return matches, positions
