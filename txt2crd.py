@@ -29,11 +29,12 @@ def convert2Chordpro(filePath):
         line = unicode(l, encoding='utf-8').replace(u"\u00A0", " ") # replace non breaking space with regular space
         matches, positions = getChordMatches(line)
         isChordLine = matches and positions and (removeWhitespaces(line) == ''.join(matches))
-        if isChordLine:
+        lastIsChordLine = lastMatches and lastPositions and lastLine
+        if isChordLine and not lastIsChordLine:
             lastLine = line
             lastMatches = matches
             lastPositions = positions
-        elif lastMatches and lastPositions and lastLine and line.strip():
+        elif not isChordLine and lastIsChordLine and line.strip():
             newLine = insertInLine(line, lastMatches, lastPositions)
             outputFileStream.write(newLine.encode('utf-8'))
             lastLine = lastMatches = lastPositions = None
