@@ -20,7 +20,7 @@ def convert2Chordpro(filePath):
     matches = positions = []
     lastLine = lastMatches = lastPositions = None
     for l in inputFileStream:
-        line = unicode(l, encoding='utf-8')
+        line = unicode(l, encoding='utf-8').replace(u"\u00A0", " ") # replace non breaking space with regular space
         matches, positions = getChordMatches(line)
         isChordLine = matches and positions and (removeWhitespaces(line) == ''.join(matches))
         if isChordLine:
