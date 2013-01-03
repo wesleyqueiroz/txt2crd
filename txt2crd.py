@@ -47,11 +47,12 @@ def getChordProLines(fileStream):
         matches, positions = getChordMatches(line)
         isChordLine = matches and positions and (removeWhitespaces(line) == ''.join(matches))
         lastIsChordLine = lastMatches and lastPositions and lastLine
+        isLyricsLine = not isChordLine and line.strip()
         if isChordLine and not lastIsChordLine:
             lastLine = line
             lastMatches = matches
             lastPositions = positions
-        elif not isChordLine and lastIsChordLine and line.strip():
+        elif isLyricsLine and lastIsChordLine:
             newLine = insertInLine(line, lastMatches, lastPositions)
             lineToWrite += newLine.encode('utf-8')
             lastLine = lastMatches = lastPositions = None
