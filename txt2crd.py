@@ -23,9 +23,25 @@ def convert2Chordpro(filePath):
     outputFileName = filePath.split("/")[-1][:-4] + ".crd"
     outputFileStream = open(outputFileName, 'w')
     
+    lineToWrite = getChordProLines(inputFileStream)
+
+    inputFileStream.close()
+    outputFileStream.write(lineToWrite)
+    outputFileStream.close()
+
+def getChordProLines(fileStream):
+    """
+    Runs through the opened file and converts it line by line to chordpro format.
+
+    @param fileStream: Stream to text file to convert.
+
+    @return: Converted lines.
+    @returntype: string
+    """
+    lineToWrite = ""
     matches = positions = []
     lastLine = lastMatches = lastPositions = None
-    for l in inputFileStream:
+    for l in fileStream:
         line = unicode(l, encoding='utf-8').replace(u"\u00A0", " ") # replace non breaking space with regular space
         matches, positions = getChordMatches(line)
         isChordLine = matches and positions and (removeWhitespaces(line) == ''.join(matches))
@@ -36,16 +52,15 @@ def convert2Chordpro(filePath):
             lastPositions = positions
         elif not isChordLine and lastIsChordLine and line.strip():
             newLine = insertInLine(line, lastMatches, lastPositions)
-            outputFileStream.write(newLine.encode('utf-8'))
+            lineToWrite += newLine.encode('utf-8')
             lastLine = lastMatches = lastPositions = None
         else:
             if lastLine:
-                outputFileStream.write(lastLine.encode('utf-8'))
+                lineToWrite += lastLine.encode('utf-8')
                 lastLine = lastMatches = lastPositions = None
-            outputFileStream.write(line.encode('utf-8'))
+            lineToWrite += line.encode('utf-8')
 
-    inputFileStream.close()
-    outputFileStream.close()
+    return lineToWrite
 
 def removeWhitespaces(line):
     """
