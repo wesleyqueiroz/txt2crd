@@ -78,15 +78,21 @@ def insertInLine(line, matches, positions):
     """
     def insert(original, new, pos):
         return original[:pos] + new + original[pos:]
+    def getLineWithTrailingSpaces(line, numberOfSpaces):
+        return line + numberOfSpaces * ' '
     i = 0
     insertOffset = 1
-    newLine = line
+    newLine = line.replace('\n', '')
+
+    if len(newLine) < positions[-1]:
+        newLine = getLineWithTrailingSpaces(newLine, positions[-1] - len(newLine))
+
     while i < len(matches):
         newLine = insert(newLine, "[%s]" % matches[i], positions[i] + insertOffset - 1)
         insertOffset += len(matches[i]) + 2
         i += 1
 
-    return newLine
+    return newLine + '\n'
 
 def getChordMatches(line):
     """
