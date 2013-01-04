@@ -78,6 +78,8 @@ def getLineWithBracketsAroundChords(line, chords):
     """
     newLine = line
     for chord in chords:
+        newLine = newLine.replace("%s " % chord, "[%s] " % chord, 1)
+        newLine = newLine.replace(" %s" % chord, " [%s]" % chord, 1)
         newLine = newLine.replace(" %s " % chord, " [%s] " % chord, 1)
 
     return newLine
