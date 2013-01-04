@@ -21,12 +21,11 @@ def convert2Chordpro(filePath):
     @type filePath: string.
     """
     inputFileStream = open(filePath, 'r')
+    lineToWrite = getChordProLines(inputFileStream)
+    inputFileStream.close()
+
     outputFileName = filePath.split("/")[-1][:-4] + ".crd"
     outputFileStream = open(outputFileName, 'w')
-    
-    lineToWrite = getChordProLines(inputFileStream)
-
-    inputFileStream.close()
     outputFileStream.write(lineToWrite)
     outputFileStream.close()
 
@@ -130,10 +129,11 @@ def getChordMatches(line):
 
     notes = "[ABCDEFG]";
     accidentals = "(?:#|##|b|bb)?";
-    chords = "(?:maj|min|m|sus|aug|dim)?"
+    chordType = "(?:maj|min|m|sus|aug|dim)?"
     additions = "(?:1|2|3|4|5|6|7|8|9|10|11)?"
-    chordFormPattern = notes + accidentals + chords + additions
-    fullPattern = chordFormPattern + "(?:/%s)?\s" % (notes + accidentals)
+    bassNote = notes + accidentals
+    chordFormPattern = bassNote + chordType + additions
+    fullPattern = chordFormPattern + "(?:/%s)?\s" % bassNote
     matches = [removeWhitespaces(x) for x in re.findall(fullPattern, line)]
     positions = [x.start() for x in re.finditer(fullPattern, line)]
 
@@ -178,13 +178,22 @@ def runTests():
     expectedLine = "[G]...Jag är den som a[E#m11]ldrig säger nej    [A]\n"
     assert actualLine == expectedLine, "'%s' doesn't match '%s'" % (actualLine, expectedLine)
 
-    # 6. Test chord lines where no lyrics follow
+    # 6. Test line with chords injected in regular text.
+    line1 = "Interlude: Dm | F | C | Gm | Dm | <-- Played twice\n"
+    line2 = "\n"
+    actualLine = getChordProLines((line1, line2))
+    expectedLine = "Interlude: [Dm] | [F] | [C] | [Gm] | [Dm] | <-- Played twice\n"
+    assert actualLine == expectedLine, "'%s' doesn't match '%s'" % (actualLine, expectedLine)
+
+    # 7. Test chord lines where no lyrics follow
     line1 = "solo:\n"
     line2 = "C  G  C  G  C  G Em  D  Em\n"
     line3 = "C     G     C      G      C     G Em  D    Em\n"
     actualLine = getChordProLines((line1, line2, line3))
-    expectedLine = line1 + "[C]  [G]  [C]  [G]  [C]  [G] [Em]  [D]  [Em]\n" + "[C]     [G]     [C]      [G]      [C]     [G] [Em]  [D]    [Em]\n"
+    expectedLine = line1 + "[C]   [G]   [C]   [G]   [C]   [G]  [Em]    [D]   [Em]\n" + "[C]     [G]     [C]      [G]      [C]     [G] [Em]  [D]    [Em]\n"
     assert actualLine == expectedLine, "'%s' doesn't match '%s'" % (actualLine, expectedLine)
+
+    print "All tests passed!"
 
 if __name__ == "__main__":
     main()
