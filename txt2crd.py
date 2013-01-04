@@ -146,7 +146,7 @@ def getChordMatches(line):
 
     notes = "[ABCDEFG]";
     accidentals = "(?:#|##|b|bb)?";
-    chordType = "(?:maj|min|m|sus|aug|dim)?"
+    chordType = "(?:maj|min|m|add|sus|aug|dim)?"
     additions = "(?:1|2|3|4|5|6|7|8|9|10|11)?"
     bassNote = notes + accidentals
     chordFormPattern = bassNote + chordType + additions
@@ -162,9 +162,9 @@ def runTests():
     """
     def assertEqual(actual, expected):
         if actual != expected:
-            print "-= FAIL! =-"
-            print "  Actual: %s" % actual
-            print "Expected: %s" % expected
+            print "-= FAIL! =-\n"
+            print "Actual:\n%s" % actual
+            print "Expected:\n%s" % expected
 
     # 1. Test simple chords and a chord that ends after the lyrics line
     line1 = "G                  Em              A\n"
