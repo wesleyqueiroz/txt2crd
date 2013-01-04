@@ -131,7 +131,7 @@ def getChordMatches(line):
     notes = "[ABCDEFG]";
     accidentals = "(?:#|##|b|bb)?";
     chords = "(?:maj|min|m|sus|aug|dim)?"
-    additions = "[0-9]?"
+    additions = "(?:1|2|3|4|5|6|7|8|9|10|11)?"
     chordFormPattern = notes + accidentals + chords + additions
     fullPattern = chordFormPattern + "(?:/%s)?\s" % (notes + accidentals)
     matches = [removeWhitespaces(x) for x in re.findall(fullPattern, line)]
@@ -175,7 +175,7 @@ def runTests():
     line1 = "G                  E#m11              A\n"
     line2 = "...Jag är den som aldrig säger nej\n"
     actualLine = getChordProLines((line1, line2))
-    expectedLine = "[G]...Jag är den som a[E#m11]ldrig säger [A]nej\n"
+    expectedLine = "[G]...Jag är den som a[E#m11]ldrig säger nej    [A]\n"
     assert actualLine == expectedLine, "'%s' doesn't match '%s'" % (actualLine, expectedLine)
 
     # 6. Test chord lines where no lyrics follow
