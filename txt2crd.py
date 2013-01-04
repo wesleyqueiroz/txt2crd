@@ -59,6 +59,9 @@ def getChordProLines(fileStream):
             newLine = insertInLine("", lastMatches, lastPositions)
             lineToWrite += newLine
             lastLine = lastMatches = lastPositions = None
+        elif matches and not isChordLine:
+            newLine = putBracketsAroundChords(line, matches)
+            lineToWrite += newLine
         else:
             if lastLine:
                 lineToWrite += lastLine.encode('utf-8')
@@ -66,6 +69,21 @@ def getChordProLines(fileStream):
             lineToWrite += line.encode('utf-8')
 
     return lineToWrite
+
+def putBracketsAroundChords(line, chords):
+    """
+    Puts square brackets around all chords in line
+
+    @param line: Line containing chords
+    @type line: string
+    @param chords: List of chords
+    @type line: [string]
+    """
+    newLine = line
+    for chord in chords:
+        newLine = newLine.replace(" %s " % chord, " [%s] " % chord, 1)
+
+    return newLine
 
 def removeWhitespaces(line):
     """
@@ -188,7 +206,7 @@ def runTests():
     line1 = "Interlude: Dm | F | C | Gm | Dm | <-- Played twice\n"
     line2 = "\n"
     actualLine = getChordProLines((line1, line2))
-    expectedLine = "Interlude: [Dm] | [F] | [C] | [Gm] | [Dm] | <-- Played twice\n"
+    expectedLine = "Interlude: [Dm] | [F] | [C] | [Gm] | [Dm] | <-- Played twice\n\n"
     assertEqual(actualLine, expectedLine)
 
     # 7. Test chord lines where no lyrics follow
