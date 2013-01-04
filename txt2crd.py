@@ -44,7 +44,7 @@ def getChordProLines(fileStream):
     for l in fileStream:
         line = unicode(l, encoding='utf-8').replace(u"\u00A0", " ") # replace non breaking space with regular space
         matches, positions = getChordMatches(line)
-        isChordLine = matches and positions and (removeWhitespaces(line) == ''.join(matches))
+        isChordLine = matches and positions and (getLineWithoutWhitespaces(line) == ''.join(matches))
         lastIsChordLine = lastMatches and lastPositions and lastLine
         isLyricsLine = not isChordLine and line.strip()
         if isChordLine and not lastIsChordLine:
@@ -52,25 +52,22 @@ def getChordProLines(fileStream):
             lastMatches = matches
             lastPositions = positions
         elif lastIsChordLine and isLyricsLine:
-            newLine = insertInLine(line, lastMatches, lastPositions)
-            lineToWrite += newLine.encode('utf-8')
+            lineToWrite += getLineWithInsertedChords(line, lastMatches, lastPositions)
             lastLine = lastMatches = lastPositions = None
         elif lastIsChordLine and not isLyricsLine:
-            newLine = insertInLine("", lastMatches, lastPositions)
-            lineToWrite += newLine
+            lineToWrite += getLineWithInsertedChords("", lastMatches, lastPositions)
             lastLine = lastMatches = lastPositions = None
         elif matches and not isChordLine:
-            newLine = putBracketsAroundChords(line, matches)
-            lineToWrite += newLine
+            lineToWrite += getLineWithBracketsAroundChords(line, matches)
         else:
             if lastLine:
-                lineToWrite += lastLine.encode('utf-8')
+                lineToWrite += lastLine
                 lastLine = lastMatches = lastPositions = None
-            lineToWrite += line.encode('utf-8')
+            lineToWrite += line
 
-    return lineToWrite
+    return lineToWrite.encode('utf-8')
 
-def putBracketsAroundChords(line, chords):
+def getLineWithBracketsAroundChords(line, chords):
     """
     Puts square brackets around all chords in line
 
@@ -85,7 +82,7 @@ def putBracketsAroundChords(line, chords):
 
     return newLine
 
-def removeWhitespaces(line):
+def getLineWithoutWhitespaces(line):
     """
     Replaces whitespaces in line with empty string.
 
@@ -97,7 +94,7 @@ def removeWhitespaces(line):
     """
     return line.replace(' ', '').replace('\n', '')
         
-def insertInLine(line, matches, positions):
+def getLineWithInsertedChords(line, matches, positions):
     """
     Inserts chords into line according to specified positions.
     E.g. if there's supposed to be a C in the line at position 10 and a 
@@ -152,7 +149,7 @@ def getChordMatches(line):
     bassNote = notes + accidentals
     chordFormPattern = bassNote + chordType + additions
     fullPattern = chordFormPattern + "(?:/%s)?\s" % bassNote
-    matches = [removeWhitespaces(x) for x in re.findall(fullPattern, line)]
+    matches = [getLineWithoutWhitespaces(x) for x in re.findall(fullPattern, line)]
     positions = [x.start() for x in re.finditer(fullPattern, line)]
 
     return matches, positions
