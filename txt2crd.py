@@ -13,7 +13,7 @@ def main():
 
 def convert2Chordpro(filePath):
     """
-    Runs through the opened file and converts it line by line to chordpro format.
+    Opens and closes the input and output files.
 
     @param filePath: Path to opened input file.
     @type filePath: string.
@@ -52,16 +52,11 @@ def getChordProLines(fileStream):
         elif lastIsChordLine and isLyricsLine:
             lineToWrite += getLineWithInsertedChords(line, lastMatches, lastPositions)
             lastLine = lastMatches = lastPositions = None
-        elif lastIsChordLine and not isLyricsLine:
-            lineToWrite += getLineWithInsertedChords("", lastMatches, lastPositions)
-            lastLine = lastMatches = lastPositions = None
-        elif matches and not isChordLine:
-            lineToWrite += getLineWithBracketsAroundChords(line, matches)
         else:
             if lastLine:
-                lineToWrite += lastLine
+                lineToWrite += getLineWithBracketsAroundChords(lastLine, lastMatches)
                 lastLine = lastMatches = lastPositions = None
-            lineToWrite += line
+            lineToWrite += getLineWithBracketsAroundChords(line, matches)
 
     return lineToWrite.encode('utf-8')
 

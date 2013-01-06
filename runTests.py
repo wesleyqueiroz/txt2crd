@@ -30,7 +30,7 @@ def runTests():
     line1 = "G                  Em              A\n"
     line2 = "\n"
     actualLine = getChordProLines((line1, line2))
-    expectedLine = "[G]                   [Em]                [A]\n"
+    expectedLine = "[G]                  [Em]              [A]\n" + line2
     assertEqual(actualLine, expectedLine)
 
     # 4. Test simple line with no chords
@@ -59,10 +59,9 @@ def runTests():
     line2 = "C  G  C  G  C  G Em  D  Em\n"
     line3 = "C     G     C      G      C     G Em  D    Em\n"
     actualLine = getChordProLines((line1, line2, line3))
-    expectedLine = line1 + "[C]   [G]   [C]   [G]   [C]   [G]  [Em]    [D]   [Em]\n" + "[C]     [G]     [C]      [G]      [C]     [G] [Em]  [D]    [Em]\n"
+    expectedLine = line1 + "[C]  [G]  [C]  [G]  [C]  [G] [Em]  [D]  [Em]\n" + \
+                           "[C]     [G]     [C]      [G]      [C]     [G] [Em]  [D]    [Em]\n"
     assertEqual(actualLine, expectedLine)
-
-    print "All tests passed!"
 
 if __name__ == "__main__":
     runTests()
