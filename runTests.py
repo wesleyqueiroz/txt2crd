@@ -63,5 +63,13 @@ def runTests():
                            "[C]     [G]     [C]      [G]      [C]     [G] [Em]  [D]    [Em]\n"
     assertEqual(actualLine, expectedLine)
 
+    # 8. Test chord lines where no lyrics follow
+    line1 = "\n"
+    line2 = "CAPO ON 3RD FRET!\n"
+    line3 = "\n"
+    actualLine = getChordProLines((line1, line2, line3))
+    expectedLine = line1 + line2 + line3
+    assertEqual(actualLine, expectedLine)
+
 if __name__ == "__main__":
     runTests()
