@@ -71,12 +71,20 @@ def runTests():
     expectedLine = line1 + line2 + line3
     assertEqual(actualLine, expectedLine)
 
-    # 9. Test chord lines where no lyrics follow
+    # 9. Test chord line with Emadd9
     line1 = "                And so Happy Christmas\n"
     line2 = "                    D            Em     Emadd9     Esus4      Em \n"
     line3 = "                We hope you have fun\n"
     actualLine = getChordProLines((line1, line2, line3))
     expectedLine = line1 + "                We h[D]ope you have [Em]fun    [Emadd9]           [Esus4]           [Em]\n"
+    assertEqual(actualLine, expectedLine)
+
+    # 10. Test chord line with Aminmaj7
+    line1 = "                I hope you have fun\n"
+    line2 = "                    D            Em     Aminmaj7     Esus4      Em \n"
+    line3 = "                We hope you have fun\n"
+    actualLine = getChordProLines((line1, line2, line3))
+    expectedLine = line1 + "                We h[D]ope you have [Em]fun    [Aminmaj7]             [Esus4]           [Em]\n"
     assertEqual(actualLine, expectedLine)
 
 if __name__ == "__main__":
