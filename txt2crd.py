@@ -139,11 +139,11 @@ def getChordMatches(line):
 
     notes = "[ABCDEFG]"
     accidentals = "(?:#|##|b|bb)?"
-    chordType = "(?:maj|add|sus|aug|dim)?"
+    chordType = "(?:Min|min|m)?(?:maj|Maj|add|Add|sus|Sus|aug|Aug|dim|Dim)?"
     additions = "(?:1|2|3|4|5|6|7|8|9|10|11|12|13)?"
     bassNote = notes + accidentals
-    chordFormPattern = bassNote + "(?:min|m)?" + chordType + additions
-    fullPattern = chordFormPattern + "(?:/%s)?\s" % bassNote
+    chordFormPattern = bassNote + chordType + additions
+    fullPattern = "%s(?:/%s)?\s" % (chordFormPattern, bassNote)
     matches = [getLineWithoutWhitespaces(x) for x in re.findall(fullPattern, line)]
     positions = [x.start() for x in re.finditer(fullPattern, line)]
 

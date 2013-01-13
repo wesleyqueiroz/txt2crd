@@ -87,5 +87,13 @@ def runTests():
     expectedLine = line1 + "                We h[D]ope you have [Em]fun    [Aminmaj7]             [Esus4]           [Em]\n"
     assertEqual(actualLine, expectedLine)
 
+    # 11. Test chord line with AmMaj7
+    line1 = "                I hope you have fun\n"
+    line2 = "                    D            Em     AmMaj7     Esus4      Em \n"
+    line3 = "                We hope you have fun\n"
+    actualLine = getChordProLines((line1, line2, line3))
+    expectedLine = line1 + "                We h[D]ope you have [Em]fun    [AmMaj7]           [Esus4]           [Em]\n"
+    assertEqual(actualLine, expectedLine)
+
 if __name__ == "__main__":
     runTests()
