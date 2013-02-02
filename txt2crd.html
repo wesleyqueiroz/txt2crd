@@ -8,7 +8,9 @@
 <body>  
      <h1>Text to Chordpro converter</h1>
      <form id="inputForm">
-        <textarea rows="50" cols="80" id="textContent" alight="left" form="inputForm" autofocus="autofocus" placeholder="Paste chords, tabs and lyrics here..."></textarea>
+        <textarea rows="25" cols="80" id="textContent" alight="left" form="inputForm" autofocus="autofocus" placeholder="Paste chords, tabs and lyrics here..."></textarea>
+        <button type="button" onclick=markAsTab();>Tab</button>
+        <button type="button" onclick=markAsChorus();>Chorus</button>
         <button type="button" onclick=convertToChordpro();>Convert</button>
      </form>
 </body>
