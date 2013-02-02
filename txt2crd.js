@@ -1,16 +1,20 @@
 function markAsTab() {
+    markSubstring("{start_of_tab}", "{end_of_tab}");
+}
+
+function markAsChorus() {
+    markSubstring("{start_of_chorus}", "{end_of_chorus}");
+}
+
+function markSubstring(markStart, markEnd) {
     var textArea = document.getElementById('textArea');
     var start = textArea.selectionStart;
     var end = textArea.selectionEnd;
     if (start < end) {
         var length = textArea.value.length;
-        var replace = "{start_of_tab}" + textArea.value.substring(start, end) + "{end_of_tab}";
+        var replace = markStart + textArea.value.substring(start, end) + markEnd;
         textArea.value = textArea.value.substring(0, start) + replace + textArea.value.substring(end, length);
     }
-}
-
-function markAsChorus() {
-
 }
 
 function convertToChordpro() {
