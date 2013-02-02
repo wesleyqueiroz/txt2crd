@@ -1,11 +1,11 @@
 function markAsTab() {
-    var textContent = document.getElementById('textContent');
-    if (textContent.selectionStart < textContent.selectionEnd) {
-        textContent.selectedText = textContent.value.substring(textContent.selectionStart, textContent.selectionEnd);
-        alert("Selection Start==> " + textContent.selectionStart + "\n" +
-              "Selection End  ==> " + textContent.selectionEnd + "\n" +
-              "Selected Text  ==> " + textContent.selectedText + "\n" +
-              "TextArea Value ==> " + textContent.value);
+    var textArea = document.getElementById('textArea');
+    var start = textArea.selectionStart;
+    var end = textArea.selectionEnd;
+    if (start < end) {
+        var length = textArea.value.length;
+        var replace = "{start_of_tab}" + textArea.value.substring(start, end) + "{end_of_tab}";
+        textArea.value = textArea.value.substring(0, start) + replace + textArea.value.substring(end, length);
     }
 }
 
@@ -14,7 +14,7 @@ function markAsChorus() {
 }
 
 function convertToChordpro() {
-    var lines = document.getElementById('textContent').value.split("\n");
+    var lines = document.getElementById('textArea').value.split("\n");
     for (var i = 0; i < lines.length; i++) {
         alert(getChordMatches(lines[i]));
     }
