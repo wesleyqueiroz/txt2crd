@@ -20,18 +20,22 @@ function markSubstring(markStart, markEnd) {
 function convertToChordpro() {
     var lines = document.getElementById('textArea').value.split("\n");
     for (var i = 0; i < lines.length; i++) {
-        alert(getChordMatches(lines[i]));
+        var matches = getChordMatches(lines[i]);
+        var chords = matches.chords;
+        var positions = matches.positions;
     }
 }
 
 function getChordMatches(line) {
-    var notes = "[ABCDEFG]";
-    var accidentals = "(?:#|##|b|bb)?";
-    var chordType = "(?:Min|min|m)?(?:maj|Maj|add|Add|sus|Sus|aug|Aug|dim|Dim)?";
-    var additions = "(?:1|2|3|4|5|6|7|8|9|10|11|12|13)?";
-    var bassNote = notes + accidentals;
-    var chordFormPattern = bassNote + chordType + additions;
-    var fullPattern = chordFormPattern + "(?:/" + bassNote + ")?\s";
+    var pattern = /[ABCDEFG](?:#|##|b|bb)?(?:min|m)?(?:maj|add|sus|aug|dim)?[0-9]*(?:\/[ABCDEFG](?:#|##|b|bb)?)?/gi;
+    var chords = line.match(pattern);
+    var positions = [];
+    while ((match = pattern.exec(line)) != null) {
+        positions.push(match.index);
+    }
 
-    return line.search(fullPattern);
+    return {
+        "chords":chords,
+        "positions":positions
+    };
 }
