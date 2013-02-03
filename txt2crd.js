@@ -105,11 +105,19 @@ function getLineWithInsertedChords(line, chords, positions) {
 }
 
 function getChordMatches(line) {
-    var pattern = /[ABCDEFG](?:#|##|b|bb)?(?:min|m)?(?:maj|add|sus|aug|dim)?[0-9]*(?:\/[ABCDEFG](?:#|##|b|bb)?)?/g;
+    var pattern = /(?:^|\s)[A-G](?:##?|bb?)?(?:min|m)?(?:maj|add|sus|aug|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
     var chords = line.match(pattern);
+    var chordLength = -1;
     var positions = [];
+    
     while ((match = pattern.exec(line)) != null) {
         positions.push(match.index);
+    }
+
+    for (var i = 0; chords && i < chords.length; i++) {
+        chordLength = chords[i].length;
+        chords[i] = chords[i].trim();
+        positions[i] -= chords[i].length - chordLength;
     }
 
     return {
