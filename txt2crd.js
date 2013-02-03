@@ -1,100 +1,83 @@
-function markAsTab() {
-    markSubstring("{start_of_tab}", "{end_of_tab}");
-}
-
-function markAsChorus() {
-    markSubstring("{start_of_chorus}", "{end_of_chorus}");
-}
-
 function markSubstring(markStart, markEnd) {
-    var textArea = document.getElementById('textArea');
-    var start = textArea.selectionStart;
-    var end = textArea.selectionEnd;
+    "use strict";
+    var textArea, start, end, length, replace;
+    textArea = document.getElementById('textArea');
+    start = textArea.selectionStart;
+    end = textArea.selectionEnd;
     if (start < end) {
-        var length = textArea.value.length;
-        var replace = markStart + textArea.value.substring(start, end) + markEnd;
+        length = textArea.value.length;
+        replace = markStart + textArea.value.substring(start, end) + markEnd;
         textArea.value = textArea.value.substring(0, start) + replace + textArea.value.substring(end, length);
     }
 }
 
-function convertToChordpro() {
-    var chordProLine = "";
-    var matches = line = null;
-    var chords = positions = lastLine = lastChords = lastPositions = null;
-    var isChordLine = isLyricsLine = lastIsChordLine = false;
-    var textArea = document.getElementById('textArea');
-    var lines = textArea.value.split("\n");
-    for (var i = 0; i < lines.length; i++) {
-        line = lines[i];
-        matches = getChordMatches(line);
-        chords = matches.chords;
-        positions = matches.positions;
-        isChordLine = (chords != null) && (positions != null) && isChordsOnly(line, chords);
-        lastIsChordLine = (lastChords != null) && (lastPositions != null);
-        isLyricsLine = (isChordLine == false) && (line.trim != "");
-        if (isChordLine && !lastIsChordLine) {
-            lastLine = line;
-            lastChords = chords;
-            lastPositions = positions;
-        } 
-        else if (lastIsChordLine && isLyricsLine) {
-            chordProLine += getLineWithInsertedChords(line, lastChords, lastPositions);
-            lastLine = lastChords = lastPositions = null;
-        } 
-        else {
-            if (lastLine) {
-                chordProLine += getLineWithBracketsAroundChords(lastLine, lastChords);
-                lastLine = lastChords = lastPositions = null;
-            }
-            chordProLine += getLineWithBracketsAroundChords(line, chords);
-        }
-    }
-
-    textArea.value = chordProLine;
+function markAsTab() {
+    "use strict";
+    markSubstring("{start_of_tab}", "{end_of_tab}");
 }
 
-function getLineWithBracketsAroundChords(line, chords) {
-    var newLine = line;
-    if (chords) {
-        for (var i = 0; i < chords.length; i++) {
-            chord = chords[i];
-            newLine = newLine.replace(chord + " ", "[" + chord + "] ");
-            newLine = newLine.replace(" " + chord, " [" + chord + "]");
-            newLine = newLine.replace(" " + chord + " ", " [" + chord + "] ");
-        }
-    };
-
-    return newLine + "\n";
+function markAsChorus() {
+    "use strict";
+    markSubstring("{start_of_chorus}", "{end_of_chorus}");
 }
 
-function isChordsOnly(line, chords) {
-    return (line.replace(/\s+/g, '') == chords.join(""));
-}
-
-String.prototype.repeat = function(num) {
-    return new Array(num + 1).join(this);
-};
-
-String.prototype.trim = function() {
+String.prototype.trim = function () {
+    "use strict";
     return String(this).replace(/^\s+|\s+$/g, '');
 };
 
+function getChordMatches(line) {
+    "use strict";
+    var match, pattern, chords, chordLength, positions, i;
+    pattern = /(?:^|\s)[A-G](?:##?|bb?)?(?:min|m)?(?:maj|add|sus|aug|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
+    chords = line.match(pattern);
+    chordLength = -1;
+    positions = [];
+    while ((match = pattern.exec(line)) !== null) {
+        positions.push(match.index);
+    }
+
+    for (i = 0; chords && i < chords.length; i += 1) {
+        chordLength = chords[i].length;
+        chords[i] = chords[i].trim();
+        positions[i] -= chords[i].length - chordLength;
+    }
+
+    return {
+        "chords": chords,
+        "positions": positions
+    };
+}
+
+function isChordsOnly(line, chords) {
+    "use strict";
+    return (line.replace(/\s+/g, '') === chords.join(""));
+}
+
+String.prototype.repeat = function (num) {
+    "use strict";
+    var tmpArray = [];
+    tmpArray[num + 1] = undefined;
+    return tmpArray.join(this);
+};
+
 String.prototype.insert = function (index, string) {
-  if (index > 0)
-    return this.substring(0, index) + string + this.substring(index, this.length);
-  else
+    "use strict";
+    if (index > 0) {
+        return this.substring(0, index) + string + this.substring(index, this.length);
+    }
     return string + this;
 };
 
 function getLineWithInsertedChords(line, chords, positions) {
-    var i = 0;
-    var insertOffset = 0;
-    var newLine = line.replace("\n", "");
-
+    "use strict";
+    var i, insertOffset, newLine;
+    i = 0;
+    insertOffset = 0;
+    newLine = line.replace("\n", "");
     if (newLine.length < positions[positions.length - 1]) {
         newLine = newLine + " ".repeat(positions[positions.length - 1] - newLine.length);
     }
-
     while (i < chords.length) {
         newLine = newLine.insert(positions[i] + insertOffset, "[" + chords[i] + "]");
         insertOffset += chords[i].length + 2;
@@ -104,24 +87,53 @@ function getLineWithInsertedChords(line, chords, positions) {
     return newLine + "\n";
 }
 
-function getChordMatches(line) {
-    var pattern = /(?:^|\s)[A-G](?:##?|bb?)?(?:min|m)?(?:maj|add|sus|aug|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
-    var chords = line.match(pattern);
-    var chordLength = -1;
-    var positions = [];
-    
-    while ((match = pattern.exec(line)) != null) {
-        positions.push(match.index);
+function getLineWithBracketsAroundChords(line, chords) {
+    "use strict";
+    var newLine, chord, i;
+    newLine = line;
+    if (chords) {
+        for (i = 0; i < chords.length; i += 1) {
+            chord = chords[i];
+            newLine = newLine.replace(chord + " ", "[" + chord + "] ");
+            newLine = newLine.replace(" " + chord, " [" + chord + "]");
+            newLine = newLine.replace(" " + chord + " ", " [" + chord + "] ");
+        }
     }
 
-    for (var i = 0; chords && i < chords.length; i++) {
-        chordLength = chords[i].length;
-        chords[i] = chords[i].trim();
-        positions[i] -= chords[i].length - chordLength;
+    return newLine + "\n";
+}
+
+function convertToChordpro() {
+    "use strict";
+    var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isLyricsLine, lastIsChordLine, textArea, lines, i;
+    chordProLine = "";
+    matches = line = chords = positions = lastLine = lastChords = lastPositions = null;
+    isChordLine = isLyricsLine = lastIsChordLine = false;
+    textArea = document.getElementById('textArea');
+    lines = textArea.value.split("\n");
+    for (i = 0; i < lines.length; i += 1) {
+        line = lines[i];
+        matches = getChordMatches(line);
+        chords = matches.chords;
+        positions = matches.positions;
+        isChordLine = (chords !== null) && (positions !== null) && isChordsOnly(line, chords);
+        lastIsChordLine = (lastChords !== null) && (lastPositions !== null);
+        isLyricsLine = (isChordLine === false) && (line.trim !== "");
+        if (isChordLine && !lastIsChordLine) {
+            lastLine = line;
+            lastChords = chords;
+            lastPositions = positions;
+        } else if (lastIsChordLine && isLyricsLine) {
+            chordProLine += getLineWithInsertedChords(line, lastChords, lastPositions);
+            lastLine = lastChords = lastPositions = null;
+        } else {
+            if (lastLine) {
+                chordProLine += getLineWithBracketsAroundChords(lastLine, lastChords);
+                lastLine = lastChords = lastPositions = null;
+            }
+            chordProLine += getLineWithBracketsAroundChords(line, chords);
+        }
     }
 
-    return {
-        "chords":chords,
-        "positions":positions
-    };
+    textArea.value = chordProLine;
 }
