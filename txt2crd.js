@@ -105,10 +105,10 @@ function getLineWithBracketsAroundChords(line, chords) {
 
 function convertToChordpro() {
     "use strict";
-    var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isLyricsLine, lastIsChordLine, textArea, lines, i;
+    var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isTabLine, isLyricsLine, lastIsChordLine, textArea, lines, i;
     chordProLine = "";
     matches = line = chords = positions = lastLine = lastChords = lastPositions = null;
-    isChordLine = isLyricsLine = lastIsChordLine = false;
+    isChordLine = isLyricsLine = lastIsChordLine = isTabLine = false;
     textArea = document.getElementById('textArea');
     lines = textArea.value.split("\n");
     for (i = 0; i < lines.length; i += 1) {
@@ -116,9 +116,10 @@ function convertToChordpro() {
         matches = getChordMatches(line);
         chords = matches.chords;
         positions = matches.positions;
-        isChordLine = (chords !== null) && (positions !== null) && isChordsOnly(line, chords);
+        isTabLine = ((isTabLine == true) || (line.indexOf("{start_of_tab}") !== -1)) && (line.indexOf("{end_of_tab}") === -1);
+        isChordLine = (isTabLine == false) && (chords !== null) && (positions !== null) && isChordsOnly(line, chords);
         lastIsChordLine = (lastChords !== null) && (lastPositions !== null);
-        isLyricsLine = (isChordLine === false) && (line.trim !== "");
+        isLyricsLine = (isTabLine == false) && (isChordLine === false) && (line.trim !== "");
         if (isChordLine && !lastIsChordLine) {
             lastLine = line;
             lastChords = chords;
@@ -126,6 +127,8 @@ function convertToChordpro() {
         } else if (lastIsChordLine && isLyricsLine) {
             chordProLine += getLineWithInsertedChords(line, lastChords, lastPositions);
             lastLine = lastChords = lastPositions = null;
+        } else if (isTabLine) {
+            chordProLine += line + "\n";
         } else {
             if (lastLine) {
                 chordProLine += getLineWithBracketsAroundChords(lastLine, lastChords);
