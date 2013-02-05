@@ -13,12 +13,12 @@ function markSubstring(markStart, markEnd) {
 
 function markAsTab() {
     "use strict";
-    markSubstring("{start_of_tab}", "{end_of_tab}");
+    markSubstring("{start_of_tab}\n", "\n{end_of_tab}");
 }
 
 function markAsChorus() {
     "use strict";
-    markSubstring("{start_of_chorus}", "{end_of_chorus}");
+    markSubstring("{start_of_chorus}\n", "\n{end_of_chorus}");
 }
 
 String.prototype.trim = function () {
