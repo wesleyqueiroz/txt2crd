@@ -112,7 +112,7 @@ function convertToChordpro() {
     textArea = document.getElementById('textArea');
     lines = textArea.value.split("\n");
     for (i = 0; i < lines.length; i += 1) {
-        line = lines[i];
+        line = lines[i].replace(/\t/g, '        ');
         matches = getChordMatches(line);
         chords = matches.chords;
         positions = matches.positions;
