@@ -116,10 +116,10 @@ function convertToChordpro() {
         matches = getChordMatches(line);
         chords = matches.chords;
         positions = matches.positions;
-        isTabLine = ((isTabLine == true) || (line.indexOf("{start_of_tab}") !== -1)) && (line.indexOf("{end_of_tab}") === -1);
-        isChordLine = (isTabLine == false) && (chords !== null) && (positions !== null) && isChordsOnly(line, chords);
+        isTabLine = ((isTabLine === true) || (line.indexOf("{start_of_tab}") !== -1)) && (line.indexOf("{end_of_tab}") === -1);
+        isChordLine = (isTabLine === false) && (chords !== null) && (positions !== null) && isChordsOnly(line, chords);
         lastIsChordLine = (lastChords !== null) && (lastPositions !== null);
-        isLyricsLine = (isTabLine == false) && (isChordLine === false) && (line.trim !== "");
+        isLyricsLine = (isTabLine === false) && (isChordLine === false) && (line.trim !== "");
         if (isChordLine && !lastIsChordLine) {
             lastLine = line;
             lastChords = chords;
