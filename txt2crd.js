@@ -103,6 +103,10 @@ function getLineWithBracketsAroundChords(line, chords) {
     return newLine + "\n";
 }
 
+function replaceSpecialCharsWithRegularSpace(line) {
+    return line.replace('\xA0', ' ').replace(/\t/g, '        ');
+}
+
 function convert(textAreaValue) {
     "use strict";
     var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isTabLine, isLyricsLine, lastIsChordLine, textArea, lines, i;
@@ -111,7 +115,7 @@ function convert(textAreaValue) {
     isChordLine = isLyricsLine = lastIsChordLine = isTabLine = false;
     lines = textAreaValue.split("\n");
     for (i = 0; i < lines.length; i += 1) {
-        line = lines[i].replace(/\t/g, '        ');
+        line = replaceSpecialCharsWithRegularSpace(lines[i]);
         matches = getChordMatches(line);
         chords = matches.chords;
         positions = matches.positions;
