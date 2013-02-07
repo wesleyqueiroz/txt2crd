@@ -29,7 +29,7 @@ String.prototype.trim = function () {
 function getChordMatches(line) {
     "use strict";
     var match, pattern, chords, chordLength, positions, i;
-    pattern = /(?:^|\s)[A-G](?:##?|bb?)?(?:min|m)?(?:maj|add|sus|aug|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
+    pattern = /(?:^|\s)[A-G](?:##?|bb?)?(?:min|m)?(?:Maj|maj|Add|add|Sus|sus|Aug|aug|Dim|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
     chords = line.match(pattern);
     chordLength = -1;
     positions = [];
@@ -57,7 +57,7 @@ function isChordsOnly(line, chords) {
 String.prototype.repeat = function (num) {
     "use strict";
     var tmpArray = [];
-    tmpArray[num + 1] = undefined;
+    tmpArray[num] = undefined;
     return tmpArray.join(this);
 };
 
@@ -118,7 +118,7 @@ function convert(textAreaValue) {
         isTabLine = ((isTabLine === true) || (line.indexOf("{start_of_tab}") !== -1)) && (line.indexOf("{end_of_tab}") === -1);
         isChordLine = (isTabLine === false) && (chords !== null) && (positions !== null) && isChordsOnly(line, chords);
         lastIsChordLine = (lastChords !== null) && (lastPositions !== null);
-        isLyricsLine = (isTabLine === false) && (isChordLine === false) && (line.trim !== "");
+        isLyricsLine = (isTabLine === false) && (isChordLine === false) && (line.trim() !== "");
         if (isChordLine && !lastIsChordLine) {
             lastLine = line;
             lastChords = chords;
