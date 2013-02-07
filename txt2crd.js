@@ -103,14 +103,13 @@ function getLineWithBracketsAroundChords(line, chords) {
     return newLine + "\n";
 }
 
-function convertToChordpro() {
+function convert(textAreaValue) {
     "use strict";
     var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isTabLine, isLyricsLine, lastIsChordLine, textArea, lines, i;
     chordProLine = "";
     matches = line = chords = positions = lastLine = lastChords = lastPositions = null;
     isChordLine = isLyricsLine = lastIsChordLine = isTabLine = false;
-    textArea = document.getElementById('textArea');
-    lines = textArea.value.split("\n");
+    lines = textAreaValue.split("\n");
     for (i = 0; i < lines.length; i += 1) {
         line = lines[i].replace(/\t/g, '        ');
         matches = getChordMatches(line);
@@ -138,5 +137,11 @@ function convertToChordpro() {
         }
     }
 
-    textArea.value = chordProLine;
+    return chordProLine;
+}
+
+function convertToChordpro() {
+    "use strict";
+    var textArea = document.getElementById('textArea');
+    textArea.value = convert(textArea.value);
 }
