@@ -7,11 +7,17 @@
 </head>  
 <body>  
      <h1>Text to Chordpro converter</h1>
-     <form id="inputForm">
-        <textarea rows="25" cols="80" id="textArea" alight="left" form="inputForm" autofocus="autofocus" placeholder="Paste chords, tabs and lyrics here..." style="font-family:courier" ></textarea>
+     <div>
+        <form id="inputForm">
+            <textarea rows="25" cols="80" id="textArea" alight="left" form="inputForm" autofocus="autofocus" placeholder="Paste chords, tabs and lyrics here..." style="font-family:courier" ></textarea>
+        </form>
+    </div>
+    <div>
+        <input type = "text" id = "title" placeholder = "Title" />
+        <input type = "text" id = "artist" placeholder = "Artist" />
         <button type="button" onclick=markAsTab();>Tab</button>
         <button type="button" onclick=markAsChorus();>Chorus</button>
         <button type="button" onclick=convertToChordpro();>Convert</button>
-     </form>
+    </div>
 </body>
 </html>

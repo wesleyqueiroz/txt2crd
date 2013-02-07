@@ -1,3 +1,9 @@
+test("Test markSubstring.", function() {
+    var actualLine = " ".repeat(4);
+    var expectedLine = "    ";
+    ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
+});
+
 test("Test string repeat.", function() {
     var actualLine = " ".repeat(4);
     var expectedLine = "    ";
@@ -13,6 +19,10 @@ test("Test string trim.", function() {
 test("Test string insert.", function() {
     var actualLine = "What a world!".insert(7, "beautiful ");
     var expectedLine = "What a beautiful world!";
+    ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
+
+    actualLine = "what a world!".insert(0, "Beautiful, ");
+    expectedLine = "Beautiful, what a world!";
     ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
 });
 

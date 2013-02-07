@@ -146,6 +146,17 @@ function convert(textAreaValue) {
 
 function convertToChordpro() {
     "use strict";
-    var textArea = document.getElementById('textArea');
-    textArea.value = convert(textArea.value);
+    var text = document.getElementById('textArea').value;
+
+    var artist = document.getElementById('artist').value;
+    if (artist) {
+        text = "{subtitle:" + artist + "}\n" + text;
+    }
+
+    var title = document.getElementById('title').value;
+    if (title) {
+        text = "{title:" + title + "}\n" + text;
+    }
+    
+    textArea.value = convert(text);
 }
