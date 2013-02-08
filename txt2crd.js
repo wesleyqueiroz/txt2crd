@@ -109,7 +109,7 @@ function replaceSpecialCharsWithRegularSpace(line) {
 
 function convert(textAreaValue) {
     "use strict";
-    var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isTabLine, isLyricsLine, lastIsChordLine, textArea, lines, i;
+    var chordProLine, matches, line, chords, positions, lastLine, lastChords, lastPositions, isChordLine, isTabLine, isLyricsLine, lastIsChordLine, lines, i;
     chordProLine = "";
     matches = line = chords = positions = lastLine = lastChords = lastPositions = null;
     isChordLine = isLyricsLine = lastIsChordLine = isTabLine = false;
@@ -146,17 +146,17 @@ function convert(textAreaValue) {
 
 function convertToChordpro() {
     "use strict";
-    var text = document.getElementById('textArea').value;
+    var textArea = document.getElementById('textArea');
 
     var artist = document.getElementById('artist').value;
     if (artist) {
-        text = "{subtitle:" + artist + "}\n" + text;
+        textArea.value = "{subtitle:" + artist + "}\n" + textArea.value;
     }
 
     var title = document.getElementById('title').value;
     if (title) {
-        text = "{title:" + title + "}\n" + text;
+        textArea.value = "{title:" + title + "}\n" + textArea.value;
     }
     
-    textArea.value = convert(text);
+    textArea.value = convert(textArea.value);
 }
