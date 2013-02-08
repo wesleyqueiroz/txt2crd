@@ -21,6 +21,11 @@ function markAsChorus() {
     markSubstring("{start_of_chorus}\n", "\n{end_of_chorus}");
 }
 
+function markAsComment() {
+    "use strict";
+    markSubstring("{comment:", "}");
+}
+
 String.prototype.trim = function () {
     "use strict";
     return String(this).replace(/^\s+|\s+$/g, '');
