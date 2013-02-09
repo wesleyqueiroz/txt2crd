@@ -94,14 +94,21 @@ function getLineWithInsertedChords(line, chords, positions) {
 
 function getLineWithBracketsAroundChords(line, chords) {
     "use strict";
-    var newLine, chord, i;
+    var originalLine, newLine, chord, i;
     newLine = line;
     if (chords) {
         for (i = 0; i < chords.length; i += 1) {
             chord = chords[i];
+            originalLine = newLine;
             newLine = newLine.replace(chord + " ", "[" + chord + "] ");
-            newLine = newLine.replace(" " + chord, " [" + chord + "]");
-            newLine = newLine.replace(" " + chord + " ", " [" + chord + "] ");
+
+            if (originalLine === newLine) {
+                newLine = newLine.replace(" " + chord, " [" + chord + "]");
+            }
+            
+            if (originalLine === newLine) {
+                newLine = newLine.replace(" " + chord + " ", " [" + chord + "] ");
+            }
         }
     }
 

@@ -135,10 +135,10 @@ test("Test parts marked as tab", function() {
     ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
 });
 
-test("Test crowded chordline with a Gmaj7.", function() {
+test("Test G followed by Gmaj7.", function() {
     var line1 = " G      Gmaj7  Em     Em     \n";
     var line2 = "";
     var actualLine = convert(line1 + line2);
-    var expectedLine = " [G]      [Gmaj7]  [Em]     [Em]     \n";
+    var expectedLine = " [G]      [Gmaj7]  [Em]     [Em]     \n\n";
     ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
 });
