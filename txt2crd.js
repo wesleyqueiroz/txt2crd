@@ -153,15 +153,17 @@ function convertToChordpro() {
     "use strict";
     var textArea = document.getElementById('textArea');
 
-    var artist = document.getElementById('artist').value;
+    var artist = document.getElementById('artist');
     if (artist) {
-        textArea.value = "{subtitle:" + artist + "}\n" + textArea.value;
+        textArea.value = "{subtitle:" + artist.value + "}\n" + textArea.value;
     }
 
-    var title = document.getElementById('title').value;
+    var title = document.getElementById('title');
     if (title) {
-        textArea.value = "{title:" + title + "}\n" + textArea.value;
+        textArea.value = "{title:" + title.value + "}\n" + textArea.value;
     }
     
     textArea.value = convert(textArea.value);
+    artist.value = "";
+    title.value= "";
 }
