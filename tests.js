@@ -124,3 +124,21 @@ test("Test chord line with AmMaj7.", function() {
     var expectedLine = line1 + "                We h[D]ope you have [Em]fun    [AmMaj7]           [Esus4]           [Em]\n";
     ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
 });
+
+test("Test parts marked as tab", function() {
+    var line1 = "{start_of_tab}\n";
+    var line2 = "D            Em     AmMaj7     Esus4      Em \n";
+    var line3 = "A lot of people like to sing and play!\n"
+    var line4 = "{end_of_tab}";
+    var actualLine = convert(line1 + line2 + line3 + line4);
+    var expectedLine = line1 + line2 + line3 + line4 + "\n";
+    ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
+});
+
+test("Test crowded chordline with a Gmaj7.", function() {
+    var line1 = " G      Gmaj7  Em     Em     \n";
+    var line2 = "";
+    var actualLine = convert(line1 + line2);
+    var expectedLine = " [G]      [Gmaj7]  [Em]     [Em]     \n";
+    ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
+});
