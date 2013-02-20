@@ -142,3 +142,11 @@ test("Test G followed by Gmaj7.", function() {
     var expectedLine = " [G]      [Gmaj7]  [Em]     [Em]     \n\n";
     ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
 });
+
+test("Test AM7", function() {
+    var line1 = " AM7 \n";
+    var line2 = "";
+    var actualLine = convert(line1 + line2);
+    var expectedLine = " [AM7] \n\n";
+    ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
+});
