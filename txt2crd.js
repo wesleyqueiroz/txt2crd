@@ -34,7 +34,7 @@ String.prototype.trim = function () {
 function getChordMatches(line) {
     "use strict";
     var match, pattern, chords, chordLength, positions, i;
-    pattern = /(?:^|\s)[A-G](?:##?|bb?)?(?:min|m)?(?:M|Maj|maj|Add|add|Sus|sus|Aug|aug|Dim|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
+    pattern = /(?:^|\s)[A-G](?:##?|bb?)?[0-9]*(?:min|m)?(?:M|Maj|maj|Add|add|Sus|sus|Aug|aug|Dim|dim)?[0-9]*(?:\/[A-G](?:##?|bb?)?)?(?!\S)/g;
     chords = line.match(pattern);
     chordLength = -1;
     positions = [];

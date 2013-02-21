@@ -150,3 +150,11 @@ test("Test AM7", function() {
     var expectedLine = " [AM7] \n\n";
     ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
 });
+
+test("Test A7Sus4", function() {
+    var line1 = " A7sus4 \n";
+    var line2 = "";
+    var actualLine = convert(line1 + line2);
+    var expectedLine = " [A7sus4] \n\n";
+    ok(actualLine === expectedLine, "\nA:" + actualLine + "\nE:" + expectedLine);
+});
