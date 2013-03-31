@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2D332DC170856A50093CC80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D332DB170856A50093CC80 /* UIKit.framework */; };
+		C2D332DE170856A50093CC80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D332DD170856A50093CC80 /* Foundation.framework */; };
+		C2D332E0170856A50093CC80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D332DF170856A50093CC80 /* CoreGraphics.framework */; };
+		C2D332E6170856A50093CC80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2D332E4170856A50093CC80 /* InfoPlist.strings */; };
+		C2D332E8170856A50093CC80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D332E7170856A50093CC80 /* main.m */; };
+		C2D332EC170856A50093CC80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D332EB170856A50093CC80 /* AppDelegate.m */; };
+		C2D332EE170856A50093CC80 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D332ED170856A50093CC80 /* Default.png */; };
+		C2D332F0170856A50093CC80 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D332EF170856A50093CC80 /* Default@2x.png */; };
+		C2D332F2170856A50093CC80 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D332F1170856A50093CC80 /* Default-568h@2x.png */; };
+		C2D332F5170856A50093CC80 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D332F4170856A50093CC80 /* MasterViewController.m */; };
+		C2D332F8170856A50093CC80 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D332F7170856A50093CC80 /* DetailViewController.m */; };
+		C2D332FB170856A50093CC80 /* MasterViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D332F9170856A50093CC80 /* MasterViewController_iPhone.xib */; };
+		C2D332FE170856A50093CC80 /* MasterViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D332FC170856A50093CC80 /* MasterViewController_iPad.xib */; };
+		C2D33301170856A50093CC80 /* DetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D332FF170856A50093CC80 /* DetailViewController_iPhone.xib */; };
+		C2D33304170856A50093CC80 /* DetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D33302170856A50093CC80 /* DetailViewController_iPad.xib */; };
+		C2D3330C170856A50093CC80 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D3330B170856A50093CC80 /* SenTestingKit.framework */; };
+		C2D3330D170856A50093CC80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D332DB170856A50093CC80 /* UIKit.framework */; };
+		C2D3330E170856A50093CC80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D332DD170856A50093CC80 /* Foundation.framework */; };
+		C2D33316170856A50093CC80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2D33314170856A50093CC80 /* InfoPlist.strings */; };
+		C2D33319170856A50093CC80 /* Tab2ChordproTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D33318170856A50093CC80 /* Tab2ChordproTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2D3330F170856A50093CC80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2D332D0170856A50093CC80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2D332D7170856A50093CC80;
+			remoteInfo = Tab2Chordpro;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C2D332D8170856A50093CC80 /* Tab2Chordpro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tab2Chordpro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D332DB170856A50093CC80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C2D332DD170856A50093CC80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C2D332DF170856A50093CC80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C2D332E3170856A50093CC80 /* Tab2Chordpro-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tab2Chordpro-Info.plist"; sourceTree = "<group>"; };
+		C2D332E5170856A50093CC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2D332E7170856A50093CC80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C2D332E9170856A50093CC80 /* Tab2Chordpro-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tab2Chordpro-Prefix.pch"; sourceTree = "<group>"; };
+		C2D332EA170856A50093CC80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C2D332EB170856A50093CC80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C2D332ED170856A50093CC80 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C2D332EF170856A50093CC80 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C2D332F1170856A50093CC80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C2D332F3170856A50093CC80 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		C2D332F4170856A50093CC80 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		C2D332F6170856A50093CC80 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C2D332F7170856A50093CC80 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C2D332FA170856A50093CC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPhone.xib; sourceTree = "<group>"; };
+		C2D332FD170856A50093CC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPad.xib; sourceTree = "<group>"; };
+		C2D33300170856A50093CC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPhone.xib; sourceTree = "<group>"; };
+		C2D33303170856A50093CC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPad.xib; sourceTree = "<group>"; };
+		C2D3330A170856A50093CC80 /* Tab2ChordproTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tab2ChordproTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D3330B170856A50093CC80 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		C2D33313170856A50093CC80 /* Tab2ChordproTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tab2ChordproTests-Info.plist"; sourceTree = "<group>"; };
+		C2D33315170856A50093CC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2D33317170856A50093CC80 /* Tab2ChordproTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tab2ChordproTests.h; sourceTree = "<group>"; };
+		C2D33318170856A50093CC80 /* Tab2ChordproTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tab2ChordproTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2D332D5170856A50093CC80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D332DC170856A50093CC80 /* UIKit.framework in Frameworks */,
+				C2D332DE170856A50093CC80 /* Foundation.framework in Frameworks */,
+				C2D332E0170856A50093CC80 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D33306170856A50093CC80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D3330C170856A50093CC80 /* SenTestingKit.framework in Frameworks */,
+				C2D3330D170856A50093CC80 /* UIKit.framework in Frameworks */,
+				C2D3330E170856A50093CC80 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2D332CF170856A50093CC80 = {
+			isa = PBXGroup;
+			children = (
+				C2D332E1170856A50093CC80 /* Tab2Chordpro */,
+				C2D33311170856A50093CC80 /* Tab2ChordproTests */,
+				C2D332DA170856A50093CC80 /* Frameworks */,
+				C2D332D9170856A50093CC80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C2D332D9170856A50093CC80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2D332D8170856A50093CC80 /* Tab2Chordpro.app */,
+				C2D3330A170856A50093CC80 /* Tab2ChordproTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2D332DA170856A50093CC80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2D332DB170856A50093CC80 /* UIKit.framework */,
+				C2D332DD170856A50093CC80 /* Foundation.framework */,
+				C2D332DF170856A50093CC80 /* CoreGraphics.framework */,
+				C2D3330B170856A50093CC80 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2D332E1170856A50093CC80 /* Tab2Chordpro */ = {
+			isa = PBXGroup;
+			children = (
+				C2D332EA170856A50093CC80 /* AppDelegate.h */,
+				C2D332EB170856A50093CC80 /* AppDelegate.m */,
+				C2D332F3170856A50093CC80 /* MasterViewController.h */,
+				C2D332F4170856A50093CC80 /* MasterViewController.m */,
+				C2D332F6170856A50093CC80 /* DetailViewController.h */,
+				C2D332F7170856A50093CC80 /* DetailViewController.m */,
+				C2D332F9170856A50093CC80 /* MasterViewController_iPhone.xib */,
+				C2D332FC170856A50093CC80 /* MasterViewController_iPad.xib */,
+				C2D332FF170856A50093CC80 /* DetailViewController_iPhone.xib */,
+				C2D33302170856A50093CC80 /* DetailViewController_iPad.xib */,
+				C2D332E2170856A50093CC80 /* Supporting Files */,
+			);
+			path = Tab2Chordpro;
+			sourceTree = "<group>";
+		};
+		C2D332E2170856A50093CC80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2D332E3170856A50093CC80 /* Tab2Chordpro-Info.plist */,
+				C2D332E4170856A50093CC80 /* InfoPlist.strings */,
+				C2D332E7170856A50093CC80 /* main.m */,
+				C2D332E9170856A50093CC80 /* Tab2Chordpro-Prefix.pch */,
+				C2D332ED170856A50093CC80 /* Default.png */,
+				C2D332EF170856A50093CC80 /* Default@2x.png */,
+				C2D332F1170856A50093CC80 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2D33311170856A50093CC80 /* Tab2ChordproTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2D33317170856A50093CC80 /* Tab2ChordproTests.h */,
+				C2D33318170856A50093CC80 /* Tab2ChordproTests.m */,
+				C2D33312170856A50093CC80 /* Supporting Files */,
+			);
+			path = Tab2ChordproTests;
+			sourceTree = "<group>";
+		};
+		C2D33312170856A50093CC80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2D33313170856A50093CC80 /* Tab2ChordproTests-Info.plist */,
+				C2D33314170856A50093CC80 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2D332D7170856A50093CC80 /* Tab2Chordpro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D3331C170856A50093CC80 /* Build configuration list for PBXNativeTarget "Tab2Chordpro" */;
+			buildPhases = (
+				C2D332D4170856A50093CC80 /* Sources */,
+				C2D332D5170856A50093CC80 /* Frameworks */,
+				C2D332D6170856A50093CC80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tab2Chordpro;
+			productName = Tab2Chordpro;
+			productReference = C2D332D8170856A50093CC80 /* Tab2Chordpro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2D33309170856A50093CC80 /* Tab2ChordproTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D3331F170856A50093CC80 /* Build configuration list for PBXNativeTarget "Tab2ChordproTests" */;
+			buildPhases = (
+				C2D33305170856A50093CC80 /* Sources */,
+				C2D33306170856A50093CC80 /* Frameworks */,
+				C2D33307170856A50093CC80 /* Resources */,
+				C2D33308170856A50093CC80 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2D33310170856A50093CC80 /* PBXTargetDependency */,
+			);
+			name = Tab2ChordproTests;
+			productName = Tab2ChordproTests;
+			productReference = C2D3330A170856A50093CC80 /* Tab2ChordproTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2D332D0170856A50093CC80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Magnus Olsson";
+			};
+			buildConfigurationList = C2D332D3170856A50093CC80 /* Build configuration list for PBXProject "Tab2Chordpro" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C2D332CF170856A50093CC80;
+			productRefGroup = C2D332D9170856A50093CC80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2D332D7170856A50093CC80 /* Tab2Chordpro */,
+				C2D33309170856A50093CC80 /* Tab2ChordproTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2D332D6170856A50093CC80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D332E6170856A50093CC80 /* InfoPlist.strings in Resources */,
+				C2D332EE170856A50093CC80 /* Default.png in Resources */,
+				C2D332F0170856A50093CC80 /* Default@2x.png in Resources */,
+				C2D332F2170856A50093CC80 /* Default-568h@2x.png in Resources */,
+				C2D332FB170856A50093CC80 /* MasterViewController_iPhone.xib in Resources */,
+				C2D332FE170856A50093CC80 /* MasterViewController_iPad.xib in Resources */,
+				C2D33301170856A50093CC80 /* DetailViewController_iPhone.xib in Resources */,
+				C2D33304170856A50093CC80 /* DetailViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D33307170856A50093CC80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D33316170856A50093CC80 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2D33308170856A50093CC80 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2D332D4170856A50093CC80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D332E8170856A50093CC80 /* main.m in Sources */,
+				C2D332EC170856A50093CC80 /* AppDelegate.m in Sources */,
+				C2D332F5170856A50093CC80 /* MasterViewController.m in Sources */,
+				C2D332F8170856A50093CC80 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D33305170856A50093CC80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D33319170856A50093CC80 /* Tab2ChordproTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2D33310170856A50093CC80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2D332D7170856A50093CC80 /* Tab2Chordpro */;
+			targetProxy = C2D3330F170856A50093CC80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C2D332E4170856A50093CC80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D332E5170856A50093CC80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C2D332F9170856A50093CC80 /* MasterViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D332FA170856A50093CC80 /* en */,
+			);
+			name = MasterViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		C2D332FC170856A50093CC80 /* MasterViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D332FD170856A50093CC80 /* en */,
+			);
+			name = MasterViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		C2D332FF170856A50093CC80 /* DetailViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D33300170856A50093CC80 /* en */,
+			);
+			name = DetailViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		C2D33302170856A50093CC80 /* DetailViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D33303170856A50093CC80 /* en */,
+			);
+			name = DetailViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		C2D33314170856A50093CC80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D33315170856A50093CC80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C2D3331A170856A50093CC80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2D3331B170856A50093CC80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2D3331D170856A50093CC80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tab2Chordpro/Tab2Chordpro-Prefix.pch";
+				INFOPLIST_FILE = "Tab2Chordpro/Tab2Chordpro-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C2D3331E170856A50093CC80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tab2Chordpro/Tab2Chordpro-Prefix.pch";
+				INFOPLIST_FILE = "Tab2Chordpro/Tab2Chordpro-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C2D33320170856A50093CC80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tab2Chordpro.app/Tab2Chordpro";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tab2Chordpro/Tab2Chordpro-Prefix.pch";
+				INFOPLIST_FILE = "Tab2ChordproTests/Tab2ChordproTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C2D33321170856A50093CC80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tab2Chordpro.app/Tab2Chordpro";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tab2Chordpro/Tab2Chordpro-Prefix.pch";
+				INFOPLIST_FILE = "Tab2ChordproTests/Tab2ChordproTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2D332D3170856A50093CC80 /* Build configuration list for PBXProject "Tab2Chordpro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D3331A170856A50093CC80 /* Debug */,
+				C2D3331B170856A50093CC80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2D3331C170856A50093CC80 /* Build configuration list for PBXNativeTarget "Tab2Chordpro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D3331D170856A50093CC80 /* Debug */,
+				C2D3331E170856A50093CC80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C2D3331F170856A50093CC80 /* Build configuration list for PBXNativeTarget "Tab2ChordproTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D33320170856A50093CC80 /* Debug */,
+				C2D33321170856A50093CC80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2D332D0170856A50093CC80 /* Project object */;
+}

@@ -34,4 +34,5 @@ nosetests.xml
 # Mr Developer
 .mr.developer.cfg
 .project
+Tab2Chordpro/Tab2Chordpro.xcodeproj/xcuserdata/
 .pydevproject
