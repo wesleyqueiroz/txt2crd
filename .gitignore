@@ -37,3 +37,5 @@ nosetests.xml
 Tab2Chordpro/Tab2Chordpro.xcodeproj/xcuserdata/
 .pydevproject
 Tab2Chordpro/Tab2Chordpro.xcodeproj/project.xcworkspace/xcuserdata/magnusolsson.xcuserdatad/UserInterfaceState.xcuserstate
+.idea
+node_modules
